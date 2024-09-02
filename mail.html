@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Send Mail</title>
+   <script src="https://smtpjs.com/v3/smtp.js"></script>
+
+  
+</head>
+
+<body>
+    <form method="post">
+        <input type="button" value="Send Email" onclick="sendEmail()" />
+    </form>
+</body>
+
+</html>
+
+ <script type="text/javascript">
+  function sendEmail() {
+    Email.send({
+      SecureToken: "6620591DFCE147E63350F139D4817339439D",
+      To: 'mehrabalambth@gmail.com',
+      From: "mehrabalambth@gmail.com",
+      Subject: "This is the subject",
+      Body: "And this is the body",
+      Host: "smtp.elasticemail.com",
+      Username: "mehrabalambth@gmail.com",
+      Password: "6620591DFCE147E63350F139D4817339439D",
+      Port: 2525, // default port for Elastic Email
+      SSL: true // enable SSL encryption
+    }).then(
+      message => alert(message)
+    );
+  }
+</script>
