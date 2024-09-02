@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz</title>
+
+<!-- fonts -->
+<link rel="stylesheet" href="assets/fonts/font.css">
+<link rel="stylesheet" href="new.html">
+
+<!-- fontawesome 5 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+
+<!-- bootstrap 5 -->
+<link rel="stylesheet" href="assets/css/Bootstrap/bootstrap.min.css">
+
+<!-- Custom Css Files -->
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/responsive.css">
+<link rel="stylesheet" href="assets/css/animation.css">
+
+<!--Result Css-->
+<link rel="stylesheet" href="assets/css/result_style.css">
+
+</head>
+<body onload="generateQns1()"> 
+
+<main class="overflow-hidden">
+
+<!-- step-number -->
+<div class="step-number">
+<div class="step-number-inner">
+Question <span id="activeStep">5</span>/5
+</div>
+</div>
+
+<div class="container">
+<div class="row">
+<div class="tab-100 order-c col-md-5 p-relative">
+
+<!-- side image -->
+<div class="side-img">
+<img src="assets/images/side.png" alt="side-img">
+</div>
+
+<!-- bar -->
+<div class="step-bar">
+<div class="bar">
+<div class="w-100 fill"></div>
+</div>
+<div class="bar">
+<div class="w-100 fill"></div>
+</div>
+<div class="bar">
+<div class="w-100 fill"></div>
+</div>
+<div class="bar">
+<div class="w-100 fill"></div>
+</div>
+<div class="bar">
+<div class="w-100 fill"></div>
+</div>
+</div>
+</div>
+<div class="tab-100 col-md-7">
+<div class="show-section wrapper">
+
+<!-- step 1 -->
+<section class="steps">
+
+<!-- form -->
+
+<!-- heading -->
+<h2 class="q-heading" id="question1txt"></h2>
+
+<!-- form field -->
+<div class="form-inner">
+<script type="text/javascript">
+  // Define the shuffleArray function
+  function shuffleArray(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1));
+      let temp = arr[i];
+      arr[i] = arr[j];
+      arr[j] = temp;
+    }
+    return arr;
+  }
+
+  let arr = ["Charles Babbage", "James Russell", "MS Excel", "Application Software"];
+  let numShuffles = 4;
+
+  let countriesSets = [];
+  for (let i = 0; i < numShuffles; i++) {
+    let shuffledArr = shuffleArray(arr.slice()); // create a copy of the original array
+    countriesSets.push(shuffledArr);
+  }
+
+  let length = 4;
+
+  // Randomly select one of the countries sets
+  let countries = countriesSets[Math.floor(Math.random() * countriesSets.length)];
+
+  for (let i = 0; i < countries.length; i++) {
+    let delay = `delay-${(i + 1) * 100}`;
+    let html = `
+      <div class="${delay} bounce-left radio-field">
+        <input class="checkmark" type="radio" name="op1" value="${countries[i]}">
+        <label>${countries[i]}</label>
+      </div>
+    `;
+    document.write(html);
+  }
+</script>
+</div>
+
+<script type="text/javascript">
+
+function generateQns1()
+{
+var qnsBank1 = ["Who is the Father of Computer?", "Who invented Compact Disc?", "Which one of the following is not an Operating System (OS)?", "MS Word is an example of?"];
+
+  var questionTxt = document.getElementById('question1txt');
+
+  questionTxt.innerHTML = qnsBank1[Math.floor(Math.random()*qnsBank1.length)];
+}
+</script>
+
+<!-- next previous button -->
+<div class="next-prev">
+  <button type="button" class="next" id="step1btn" onclick="loadPrevious()"><i class="fa-solid fa-arrow-left"></i>
+prev question
+</button>
+</div>
+
+</section>
+
+<!-- bootstrap 5 -->
+<script src="assets/js/Bootstrap/bootstrap.min.js"></script>
+
+<!-- jQuery -->
+<script src="assets/js/jQuery/jquery-3.6.3.min.js"></script>
+
+<!-- Result JS -->
+<script src="assets/js/result.js"></script>
+
+<!-- Custom js -->
+<script src="assets/js/custom.js"></script>
+
+</body>
+</html>
+
+<script type="text/javascript">
+                function generateQns1() {
+                    var qnsBank1 = ["Who is the Father of Computer?", "Who invented Compact Disc?", "Which one of the following is not an Operating System (OS)?", "MS Word is an example of?"];
+
+                    var questionTxt = document.getElementById('question1txt');
+
+                    questionTxt.innerHTML = qnsBank1[Math.floor(Math.random() * qnsBank1.length)];
+                }
+
+                function loadNextQns() {
+                    var question = document.getElementById('question1txt');
+                    var radios = document.getElementsByName('op1');
+                    var correctAnswers = {
+                        "Who is the Father of Computer?": "Charles Babbage",
+                        "Who invented Compact Disc?": "James Russell",
+                        "Which one of the following is not an Operating System (OS)?": "MS Excel",
+                        "MS Word is an example of?": "Application Software"
+                    };
+
+                    for (var i = 0; i < radios.length; i++) {
+                        if (radios[i].checked) {
+                            if (radios[i].value === correctAnswers[question.innerHTML]) {
+                                alert('Answer is Correct');
+                                window.location.href='question2.html';
+                            } else {
+                                alert('Answer is Incorrect');
+                            }
+                            break;
+                        }
+                    }
+                }
+            </script>

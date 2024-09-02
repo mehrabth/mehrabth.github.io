@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz</title>
+
+<!-- fonts -->
+<link rel="stylesheet" href="assets/fonts/font.css">
+
+<!-- fontawesome 5 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+<!-- bootstrap 5 -->
+<link rel="stylesheet" href="assets/css/Bootstrap/bootstrap.min.css">
+
+<!-- Custom Css Files -->
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/responsive.css">
+<link rel="stylesheet" href="assets/css/animation.css">
+
+<!--Result Css-->
+<link rel="stylesheet" href="assets/css/result_style.css">
+
+</head>
+<body onload="generateQns()">
+
+<main class="overflow-hidden">
+
+<!-- step-number -->
+<div class="step-number">
+<div class="step-number-inner">
+Question <span id="activeStep">1</span>/5
+</div>
+</div>
+
+<div class="container">
+<div class="row">
+<div class="tab-100 order-c col-md-5 p-relative">
+
+    <!-- side image -->
+    <div class="side-img">
+        <img src="assets/images/side.png" alt="side-img">
+    </div>
+
+    <!-- bar -->
+    <div class="step-bar">
+        <div class="bar">
+            <div class="w-100 fill"></div>
+        </div>
+        <div class="bar">
+            <div class="fill"></div>
+        </div>
+        <div class="bar">
+            <div class="fill"></div>
+        </div>
+        <div class="bar">
+            <div class="fill"></div>
+        </div>
+        <div class="bar">
+            <div class="fill"></div>
+        </div>
+    </div>
+</div>
+<div class="tab-100 col-md-7">
+    <div class="show-section wrapper">
+
+        <!-- step 1 -->
+        <section class="steps">
+
+            <!-- form -->
+            <form id="step1" method="post" novalidate>
+
+            <h2 class="q-heading" id="question1"></h2>
+                
+
+            <script type="text/javascript">
+                let questionBank1 = ["What is the largest animal in the world?","Which animal is known for its black and white stripes?","What do you call a baby dog?","What is the fastest land animal?","What is the capital of India?","Who is the current Prime Minister of India?"];
+
+                var showQns = document.getElementById('question1');
+
+                var generatedQuestion = questionBank1[Math.floor(Math.random()*questionBank1.length)];
+
+                function generateQns()
+                {
+                    showQns.innerHTML = generatedQuestion;
+                }
+            </script>
+
+                <!-- form field -->
+                <div class="form-inner">
+                    <script type="text/javascript">
+                     
+                  let countriesSets = [
+                      
+                   ["Elephant", "Blue Whale", "Giraffe", "Rhinoceros"],
+                   ["Zebra", "Tiger", "Leopard", "Giraffe"],
+                   ["Kitten", "Calf", "Puppy", "Cub"],
+                   ["Ostrich", "Tiger", "Lion", "Leopard"],
+                   ["Kolkata", "New Delhi", "Mumbai", "Bangalore"],
+                   ["Rahul Gandhi", "Nitish Kumar", "Arvind Kejriwal", "Narendra Modi"]
+                    ];
+ 
+                  let length = 4;
+
+                        // Randomly select one of the countries sets
+                        let countries = countriesSets[Math.floor(Math.random() * countriesSets.length)];
+
+                        for (let i = 0; i < countries.length; i++) {
+                          let delay = `delay-${(i + 1) * 100}`;
+                          let html = `
+                            <div class="${delay} bounce-left radio-field">
+                              <input class="checkmark" type="radio" name="op1" value="${countries[i]}">
+                              <label>${countries[i]}</label>
+                            </div>
+                          `;
+                          document.write(html);
+                        }
+                    </script>
+                </div>
+
+                <!-- next previous button -->
+                <div class="next-prev">
+                    <button type="button" class="next" id="step1btn">
+                        next question<i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </form>
+        </section>
+
+<!-- bootstrap 5 -->
+<script src="assets/js/Bootstrap/bootstrap.min.js"></script>
+
+<!-- jQuery -->
+<script src="assets/js/jQuery/jquery-3.6.3.min.js"></script>
+
+<!-- Result JS -->
+<script src="assets/js/result.js"></script>
+
+<!-- Custom js -->
+<script src="assets/js/custom.js"></script>
+
+</body>
+</html>

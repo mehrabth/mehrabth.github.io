@@ -1,0 +1,38 @@
+<!-- alternate script for generating random set of arrays -->
+<script type="text/javascript">
+  // Define the shuffleArray function
+  function shuffleArray(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1));
+      let temp = arr[i];
+      arr[i] = arr[j];
+      arr[j] = temp;
+    }
+    return arr;
+  }
+
+  let arr = ["Delhi", "Patna", "Bettiah", "IT Company"];
+  let numShuffles = 4;
+
+  let countriesSets = [];
+  for (let i = 0; i < numShuffles; i++) {
+    let shuffledArr = shuffleArray(arr.slice()); // create a copy of the original array
+    countriesSets.push(shuffledArr);
+  }
+
+  let length = 4;
+
+  // Randomly select one of the countries sets
+  let countries = countriesSets[Math.floor(Math.random() * countriesSets.length)];
+
+  for (let i = 0; i < countries.length; i++) {
+    let delay = `delay-${(i + 1) * 100}`;
+    let html = `
+      <div class="${delay} bounce-left radio-field">
+        <input class="checkmark" type="radio" name="op1" value="${countries[i]}">
+        <label>${countries[i]}</label>
+      </div>
+    `;
+    document.write(html);
+  }
+</script>
